@@ -2,8 +2,9 @@ import { useState } from "react";
 import AccordionItem from "./AccordionItem";
 
 function Accordion() {
-  const [open, setOpen] = useState(false);
-  const Toggle = (index) => {
+  const [open, setOpen] = useState<number | null>(null);
+
+  const Toggle = (index: number): void => {
     if (open === index) {
       return setOpen(null);
     }
@@ -15,16 +16,22 @@ function Accordion() {
     {
       title: "How to use the Alight motion Preset App?",
       desc: "Open the app > Choose your desire preset > Choose between XML or AM link >  Download the Audio from the app > import the preset in the Alight Motion",
+      titleLink: "",
+      Link: "",
     },
 
     {
       title: "Is it free to use?",
       desc: "Yes is 100% free to use! No need to worry about the payment. You can use the app as long as you can.",
+      titleLink: "",
+      Link: "",
     },
 
     {
       title: "How to Download Audio from the app?",
       desc: "You simply click 'Download Audio,' then you will be redirected to a website with a 'Download' button. Click it, and the audio will download automatically",
+      titleLink: "",
+      Link: "",
     },
   ];
 
