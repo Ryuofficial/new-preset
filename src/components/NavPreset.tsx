@@ -1,6 +1,4 @@
-import { FiMenu, FiX } from "react-icons/fi";
 import { GoHomeFill } from "react-icons/go";
-import { useState } from "react";
 import Logo from "../img/logo.webp";
 import { Link } from "react-router-dom";
 
