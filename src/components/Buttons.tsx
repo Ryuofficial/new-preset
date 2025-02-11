@@ -35,12 +35,12 @@ const Buttons = () => {
     }, 2000);
   };
 
-  const handlePlaystoreClick = () => {
-    window.open(
-      "https://www.mediafire.com/file/bfovdfv47kd8zik/AM+Preset+[2.28].apk/file",
-      "_blank"
-    );
-  };
+  // const handlePlaystoreClick = () => {
+  //   window.open(
+  //     "https://www.mediafire.com/file/bfovdfv47kd8zik/AM+Preset+[2.28].apk/file",
+  //     "_blank"
+  //   );
+  // };
 
   return (
     <div>
@@ -49,15 +49,15 @@ const Buttons = () => {
           className="transition-all flex justify-center items-center whitespace-nowrap text-[0.7rem] text-[#0e0f16] bg-gradient-to-r md:text-sm shadow-pinkShadow from-[#2af598] to-[#009efd] p-3 md:py-2 md:px-5 rounded-full active:text-[#151722] font-semibold"
           onClick={handleDownloadClick}
         >
-          {!isStarted ? "Download Now" : <LoadingAnimation />}
+          {!isStarted ? "Download App" : <LoadingAnimation />}
         </div>
 
         <div
           className="whitespace-nowrap text-[0.7rem] text-white p-[2px] bg-gradient-to-r from-[#2af598] to-[#009efd] rounded-full md:text-sm"
-          onClick={handlePlaystoreClick}
+          // onClick={handlePlaystoreClick}
         >
           <span className="transition-all flex w-full h-full bg-[#0e0f16] text-white rounded-full p-[2px] justify-center items-center active:shadow-pinkShadow active:text-[#2af598]">
-            <button className="m-[7px]">Alternative download</button>
+            <button className="m-[7px]">View All Preset (Browser)</button>
           </span>
         </div>
       </div>
