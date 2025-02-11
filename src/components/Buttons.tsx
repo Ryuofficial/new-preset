@@ -1,5 +1,6 @@
 import { ApkVersion } from "../main";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import LoadingAnimation from "./LoadingAnimation";
 
 const Buttons = () => {
@@ -57,7 +58,9 @@ const Buttons = () => {
           // onClick={handlePlaystoreClick}
         >
           <span className="transition-all flex w-full h-full bg-[#0e0f16] text-white rounded-full p-[2px] justify-center items-center active:shadow-pinkShadow active:text-[#2af598]">
-            <button className="m-[7px]">View All Preset (Browser)</button>
+            <Link to={"/presets"} className="m-[7px]">
+              View All Preset (Browser)
+            </Link>
           </span>
         </div>
       </div>
