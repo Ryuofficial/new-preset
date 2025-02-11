@@ -1,3 +1,5 @@
+import { FaTelegramPlane, FaYoutube, FaTiktok } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 function Contact() {
   return (
     <footer
@@ -11,6 +13,7 @@ function Contact() {
           developer below.
         </p>
         <div className="flex items-center justify-start mt-4">
+          <FaTelegramPlane />
           <a
             className="ml-2 text-[.84rem]"
             href="https://www.telegram.me/ryudev"
@@ -22,14 +25,17 @@ function Contact() {
 
       <div className="grid grid-cols-1 px-10">
         <div className="flex justify-center md:justify-start space-x-4 py-4">
+          <FaYoutube />
           <a
             href="https://www.youtube.com/@RyuDev_"
             aria-label="Youtube link"
           ></a>
+          <FaTiktok />
           <a
             href="https://www.tiktok.com/@dumpacryu"
             aria-label="Tiktok link"
           ></a>
+          <MdEmail />
           <a href="mailto:ryuofficial64@gmail.com" aria-label="Email link"></a>
         </div>
         <p className="text-[0.7rem] text-center md:text-start text-[#979696]">
