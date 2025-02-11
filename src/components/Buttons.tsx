@@ -4,9 +4,9 @@ import LoadingAnimation from "./LoadingAnimation";
 
 const Buttons = () => {
   const [isStarted, setIsStarted] = useState(false);
-  let isDownloading = false;
+  let isDownloading: boolean = false;
 
-  const handleDownloadClick = () => {
+  const handleDownloadClick = (): void => {
     if (isDownloading) return;
     isDownloading = true;
 
