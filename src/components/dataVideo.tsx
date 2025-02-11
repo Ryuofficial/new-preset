@@ -1,4 +1,10 @@
-const DataVideo = [
+interface Video {
+  title: string;
+  desc: string;
+  link: string;
+}
+
+const DataVideo: Video[] = [
   {
     title: "How to Use",
     desc: "How to inject skins in AM Preset",

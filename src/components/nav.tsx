@@ -4,7 +4,7 @@ function Nav() {
     <>
       <div className="flex justify-between items-center w-[92%] mx-auto p-4">
         {/* 1st box- logo */}
-        <div href="/" className="flex items-center">
+        <div className="flex items-center">
           <img className="w-14 h-14" src={Logo} alt="icon" />
           <h1 className="text-white font-semibold text-[1rem] ml-2">
             AM Preset
@@ -43,13 +43,16 @@ function Nav() {
           </button> */}
 
             <div className="md:hidden">
-              <ion-icon
+              <p className="text-white" onClick={onToggleMenu}>
+                Menu
+              </p>
+              {/* <ion-icon
                 style={{ fontSize: 25 }}
                 color="light"
                 onClick={onToggleMenu}
                 name="menu"
                 className="text-3xl cursor-pointer"
-              ></ion-icon>
+              ></ion-icon> */}
             </div>
           </div>
         </div>
@@ -59,7 +62,11 @@ function Nav() {
   );
 }
 
-function onToggleMenu(e) {
+interface ToggleMenuEvent extends React.MouseEvent<HTMLParagraphElement> {
+  target: HTMLParagraphElement & { name: string };
+}
+
+function onToggleMenu(e: ToggleMenuEvent) {
   const navLinks = document.querySelector(".nav-links-bar");
   if (navLinks) {
     e.target.name = e.target.name === "menu" ? "close" : "menu";

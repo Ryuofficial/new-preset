@@ -3,7 +3,15 @@ import CreatorIMG from "../img/creator.webp";
 import EasyIMG from "../img/easy.webp";
 import PackIMG from "../img/pack.webp";
 
-const FeatureBoxData = [
+export interface FeatureBox {
+  Title: string;
+  desc: string;
+  altText: string;
+  myKey: string;
+  icon: string;
+}
+
+const FeatureBoxData: FeatureBox[] = [
   {
     Title: "Preset Creator",
     desc: "Follow your favorite creator's preset.",

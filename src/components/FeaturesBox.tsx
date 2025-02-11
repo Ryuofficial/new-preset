@@ -1,4 +1,9 @@
-function FeaturesBox(props) {
+function FeaturesBox(props: {
+  title: string;
+  desc: string;
+  myIcon: string;
+  altText: string;
+}) {
   return (
     <div className="py-10 px-7 flex flex-col justify-center items-center space-y-2">
       <div>
