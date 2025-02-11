@@ -5,8 +5,6 @@ import Logo from "../img/logo.webp";
 import { Link } from "react-router-dom";
 
 function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <>
       <div className="flex justify-between items-center w-[92%] mx-auto p-4">
