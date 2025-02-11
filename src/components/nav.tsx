@@ -1,5 +1,20 @@
+import { FiMenu, FiX } from "react-icons/fi";
+import { useState } from "react";
 import Logo from "../img/logo.webp";
 function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  function onToggleMenu(e: any) {
+    setMenuOpen(!menuOpen);
+    const navLinks = document.querySelector(".nav-links-bar");
+    if (navLinks) {
+      e.target.name = e.target.name === "menu" ? "close" : "menu";
+      navLinks.classList.toggle("top-[13%]");
+    } else {
+      console.error("Element not found!");
+    }
+  }
+
   return (
     <>
       <div className="flex justify-between items-center w-[92%] mx-auto p-4">
@@ -38,21 +53,12 @@ function Nav() {
           </div>
 
           <div className="flex items-center gap-6">
-            {/* <button className="bg-[#a6c1ee] text-[#2af598] px-5 py-2 rounded-full hover:bg-[#87acec]">
-            Sign In
-          </button> */}
-
             <div className="md:hidden">
-              <p className="text-white" onClick={onToggleMenu}>
-                Menu
-              </p>
-              {/* <ion-icon
-                style={{ fontSize: 25 }}
-                color="light"
-                onClick={onToggleMenu}
-                name="menu"
-                className="text-3xl cursor-pointer"
-              ></ion-icon> */}
+              {!menuOpen ? (
+                <FiMenu color="white" fontSize={25} onClick={onToggleMenu} />
+              ) : (
+                <FiX color="white" fontSize={25} onClick={onToggleMenu} />
+              )}
             </div>
           </div>
         </div>
@@ -60,20 +66,6 @@ function Nav() {
       <div className="h-[1px] bg-[#151722]"></div>
     </>
   );
-}
-
-interface ToggleMenuEvent extends React.MouseEvent<HTMLParagraphElement> {
-  target: HTMLParagraphElement & { name: string };
-}
-
-function onToggleMenu(e: ToggleMenuEvent) {
-  const navLinks = document.querySelector(".nav-links-bar");
-  if (navLinks) {
-    e.target.name = e.target.name === "menu" ? "close" : "menu";
-    navLinks.classList.toggle("top-[13%]");
-  } else {
-    console.error("Element not found!");
-  }
 }
 
 export default Nav;
