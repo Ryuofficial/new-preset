@@ -1,4 +1,3 @@
-import React from "react";
 import { PresetType } from "./Presets";
 
 const PresetCard = ({
