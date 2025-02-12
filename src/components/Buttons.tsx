@@ -57,11 +57,12 @@ const Buttons = () => {
           className="whitespace-nowrap text-[0.7rem] text-white p-[2px] bg-gradient-to-r from-[#2af598] to-[#009efd] rounded-full md:text-sm"
           // onClick={handlePlaystoreClick}
         >
-          <span className="transition-all flex w-full h-full bg-[#0e0f16] text-white rounded-full p-[2px] justify-center items-center active:shadow-pinkShadow active:text-[#2af598]">
-            <Link to={"/presets"} className="m-[7px]">
-              View All Preset (Browser)
-            </Link>
-          </span>
+          <Link
+            to={"/presets"}
+            className="transition-all flex w-full h-full bg-[#0e0f16] text-white rounded-full p-[2px] justify-center items-center active:shadow-pinkShadow active:text-[#2af598]"
+          >
+            <a className="m-[7px]">View All Preset (Browser)</a>
+          </Link>
         </div>
       </div>
     </div>
