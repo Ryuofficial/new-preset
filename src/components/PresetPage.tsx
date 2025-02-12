@@ -1,4 +1,5 @@
 import { usePresets } from "@/hooks/usePresets";
+import { PiYoutubeLogo } from "react-icons/pi";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Skeleton } from "./ui/skeleton";
@@ -15,8 +16,16 @@ const PresetPage: React.FC = () => {
     return <Page404 />;
   }
 
-  const { title, author, img, DownloadMusic, DownloadXML, directAM, genre } =
-    preset;
+  const {
+    title,
+    author,
+    img,
+    DownloadMusic,
+    DownloadXML,
+    directAM,
+    genre,
+    previewPreset,
+  } = preset;
 
   return (
     <div className="h-screen overflow-auto w-screen flex text-white justify-center items-center">
@@ -31,15 +40,27 @@ const PresetPage: React.FC = () => {
 
               {/* Image */}
               {!hasError && (
-                <img
-                  className={`rounded-xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 ${
-                    isLoaded ? "block" : "hidden"
-                  }`}
-                  src={img}
-                  onLoad={() => setIsLoaded(true)}
-                  onError={() => setHasError(true)}
-                  alt={title}
-                />
+                <>
+                  <div className="relative rounded-xl overflow-hidden">
+                    <img
+                      className={`w-full h-auto backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 opacity-40 ${
+                        isLoaded ? "block" : "hidden"
+                      }`}
+                      src={img}
+                      onLoad={() => setIsLoaded(true)}
+                      onError={() => setHasError(true)}
+                      alt={title}
+                    />
+                    {/* Absolute text overlay */}
+                    <a
+                      href={previewPreset}
+                      target="_blank"
+                      className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white bg-black/40 font-semibold"
+                    >
+                      <PiYoutubeLogo className="ml-2 text-4xl md:text-5xl text-[#2af598] " />
+                    </a>
+                  </div>
+                </>
               )}
 
               {/* Fallback UI for Error */}
@@ -72,6 +93,7 @@ const PresetPage: React.FC = () => {
                 {/* Author */}
                 <a
                   href={`https://www.tiktok.com/@${author}`}
+                  target="_blank"
                   className="flex items-center space-x-2 text-[clamp(.7rem,2vw,.9rem)] cursor-pointer hover:text-[#2af598]"
                 >
                   <label className="text-white/70" htmlFor="author-label">
