@@ -9,7 +9,7 @@ const PresetPage = () => {
 
   if (!preset) {
     return (
-      <div className="h-screen w-screen flex text-white justify-center items-center">
+      <div className="text-xl h-screen w-screen flex text-white justify-center items-center">
         Preset not found.
       </div>
     );
