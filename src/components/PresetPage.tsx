@@ -50,15 +50,21 @@ const PresetPage: React.FC = () => {
                     {genre}
                   </div>
                 </div>
-                {/* Author */}
-                <div className="flex items-center space-x-2 text-[clamp(.7rem,2vw,.9rem)] ">
+
+                {/* Author
+                  https://www.tiktok.com/@[name]
+                */}
+                <a
+                  href={`https://www.tiktok.com/@${author}`}
+                  className="flex items-center space-x-2 text-[clamp(.7rem,2vw,.9rem)] cursor-pointer hover:text-[#2af598]"
+                >
                   <label className="text-white/70" htmlFor="author-label">
                     Author:
                   </label>
                   <p className="text-[clamp(.7rem,2vw,.5rem)] text-white  font-medium ">
                     {author}
                   </p>
-                </div>
+                </a>
               </div>
             </div>
           </div>
