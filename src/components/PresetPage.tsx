@@ -1,12 +1,13 @@
 import { usePresets } from "@/hooks/usePresets";
-import { dir } from "node:console";
-import React from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Skeleton } from "./ui/skeleton";
 
 const PresetPage: React.FC = () => {
   const { presets } = usePresets();
   const { prstid } = useParams(); // Get the index from URL params
-
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const preset = presets.find((p) => p.title === prstid); // Use it as an index
 
   if (!preset) {
@@ -26,11 +27,21 @@ const PresetPage: React.FC = () => {
         <div className="h-fit grid grid-cols-1 sm:grid-cols-2 md:max-w-7xl  w-screen px-0 md:px-8 ">
           <div className="w-full p-8">
             <div>
-              <img
-                className="rounded-xl backdrop-blur-xl bg-white/5   border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300"
-                src={img}
-                alt={title}
-              />
+              {/* Image */}
+
+              {!isLoaded && hasError && (
+                <Skeleton className="aspect-video w-full rounded-xl bg-[#13141b]" />
+              )}
+
+              {!hasError && (
+                <img
+                  className="rounded-xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300"
+                  src={img}
+                  onLoad={() => setIsLoaded(true)}
+                  onError={() => setHasError(true)}
+                  alt={title}
+                />
+              )}
             </div>
             <div className="mt-4 bg-slate-900  backdrop-blur-xl bg-white/5 p-6 rounded-2xl border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300">
               <div className="space-y-2">
@@ -51,9 +62,7 @@ const PresetPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Author
-                  https://www.tiktok.com/@[name]
-                */}
+                {/* Author*/}
                 <a
                   href={`https://www.tiktok.com/@${author}`}
                   className="flex items-center space-x-2 text-[clamp(.7rem,2vw,.9rem)] cursor-pointer hover:text-[#2af598]"
