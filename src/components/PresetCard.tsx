@@ -4,16 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { IoPersonSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const PresetCard = ({
-  title,
-  author,
-  previewPreset,
-  img,
-  DownloadXML,
-  DownloadMusic,
-  directAM,
-  genre,
-}: PresetType) => {
+const PresetCard = ({ title, author, img, genre }: PresetType) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
