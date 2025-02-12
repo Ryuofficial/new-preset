@@ -17,12 +17,6 @@ const PresetCard = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  // Reset loading state when image changes
-  useEffect(() => {
-    setIsLoaded(false);
-    setHasError(false);
-  }, [img]);
-
   return (
     <>
       <div className="rounded-lg border text-card-foreground shadow-sm group overflow-hidden transition-all duration-300 hover:shadow-lg max-w-sm w-full backdrop-blur-xl bg-[#0e0f16] border-white/10">
