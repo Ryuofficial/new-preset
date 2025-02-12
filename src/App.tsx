@@ -35,7 +35,7 @@ export default function App() {
               path="/presets"
               element={
                 <>
-                  <NavPreset />
+                  <NavPreset isCardPage={true} />
                   <Presets />
                 </>
               }
@@ -45,6 +45,7 @@ export default function App() {
               path="/presets/:prstid"
               element={
                 <>
+                  <NavPreset isCardPage={false} />
                   <PresetPage />
                 </>
               }

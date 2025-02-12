@@ -16,7 +16,7 @@ const PresetPage = () => {
   }
 
   return (
-    <div className="h-screen w-screen flex text-white justify-center items-center">
+    <div className="max-w-7xl mx-auto pt-16 md:pt-8 px-0 md:px-8 h-screen  flex text-white justify-center items-center bg-slate-400">
       <div>
         <h1 className="text-2xl font-bold">{preset.title}</h1>
         <p>Author: {preset.author}</p>

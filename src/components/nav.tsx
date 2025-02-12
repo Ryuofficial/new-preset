@@ -55,9 +55,9 @@ function Nav() {
           <div className="flex items-center gap-6">
             <div className="md:hidden">
               {!menuOpen ? (
-                <FiMenu color="white" fontSize={25} onClick={onToggleMenu} />
+                <FiMenu color="white" fontSize={20} onClick={onToggleMenu} />
               ) : (
-                <FiX color="white" fontSize={25} onClick={onToggleMenu} />
+                <FiX color="white" fontSize={20} onClick={onToggleMenu} />
               )}
             </div>
           </div>

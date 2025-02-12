@@ -1,8 +1,13 @@
 import { GoHomeFill } from "react-icons/go";
+import { RiArrowGoBackFill } from "react-icons/ri";
 import Logo from "../img/logo.webp";
 import { Link } from "react-router-dom";
 
-function Nav() {
+type NavProps = {
+  isCardPage: boolean;
+};
+
+function Nav({ isCardPage }: NavProps) {
   return (
     <>
       <div className="flex justify-between items-center w-[92%] mx-auto p-4">
@@ -15,12 +20,21 @@ function Nav() {
         </div>
         {/* 2nd box */}
         <div>
-          <div className="  text-[#bebebe]">
-            <Link className="hover:text-[#2af598] flex items-center" to={"/"}>
-              <GoHomeFill className="mr-3 text-xl " />
-
-              <p className="hidden sm:block">Go Home</p>
-            </Link>
+          <div className="text-[#bebebe]">
+            {isCardPage ? (
+              <Link className="hover:text-[#2af598] flex items-center" to={"/"}>
+                <GoHomeFill className="md:mr-3 text-xl " />
+                <p className="hidden sm:block">Go Home</p>
+              </Link>
+            ) : (
+              <Link
+                className="hover:text-[#2af598] flex items-center"
+                to={"/presets"}
+              >
+                <RiArrowGoBackFill className="md:mr-3 text-xl " />
+                <p className=" text-[clamp(.8rem,2vw,1rem)]">Go Back</p>
+              </Link>
+            )}
           </div>
         </div>
       </div>
