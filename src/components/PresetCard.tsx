@@ -2,6 +2,7 @@ import { PresetType } from "./Presets";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { IoPersonSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const PresetCard = ({
   title,
@@ -64,7 +65,10 @@ const PresetCard = ({
           </div>
 
           {/* Button */}
-          <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-xs font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-white/70 h-10 px-4 py-2 w-full group/button transition-all bg-white/10 hover:bg-white/20 ">
+          <Link
+            to={`/presets/${title}`}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-xs font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-white/70 h-10 px-4 py-2 w-full group/button transition-all bg-white/10 hover:bg-white/20 "
+          >
             Check Preset
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +85,7 @@ const PresetCard = ({
               <path d="M5 12h14"></path>
               <path d="m12 5 7 7-7 7"></path>
             </svg>
-          </div>
+          </Link>
         </div>
         {/* <a href={previewPreset}>Preview Preset</a>
       <a href={DownloadXML} target="_blank">

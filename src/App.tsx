@@ -8,6 +8,7 @@ import Presets from "./components/Presets";
 import Features from "./components/Features";
 import { Routes, Route } from "react-router-dom";
 import NavPreset from "./components/NavPreset";
+import PresetPage from "./components/PresetPage";
 
 export default function App() {
   return (
@@ -36,6 +37,15 @@ export default function App() {
                 <>
                   <NavPreset />
                   <Presets />
+                </>
+              }
+            />
+
+            <Route
+              path="/presets/:prstid"
+              element={
+                <>
+                  <PresetPage />
                 </>
               }
             />

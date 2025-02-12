@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { usePresets } from "../hooks/usePresets";
+
 import PresetCard from "./PresetCard";
 
 export interface PresetType {
@@ -13,20 +15,14 @@ export interface PresetType {
 }
 
 const Presets = () => {
-  const CONFIG_URL = import.meta.env.VITE_CONFIG_URL;
-  const [presets, setPresets] = useState<PresetType[]>([]);
+  const { presets } = usePresets();
+
   const [currentPage, setCurrentPage] = useState(() => {
     // Retrieve the saved page from localStorage, default to 1 if not found
     const savedPage = localStorage.getItem("currentPage");
     return savedPage ? parseInt(savedPage, 10) : 1;
   });
   const [itemsPerPage] = useState(10); // Number of items per page
-
-  useEffect(() => {
-    fetch(CONFIG_URL)
-      .then((response) => response.json())
-      .then((data) => setPresets(data));
-  }, []);
 
   // Save the current page to localStorage whenever it changes
   useEffect(() => {
