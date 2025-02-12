@@ -31,7 +31,7 @@ function Nav({ isCardPage }: NavProps) {
                 className="hover:text-[#2af598] flex items-center"
                 to={"/presets"}
               >
-                <RiArrowGoBackFill className="mr-2 md:mr-3 text-xl " />
+                <RiArrowGoBackFill className="mr-2 md:mr-3 text-base " />
                 <p className=" text-[clamp(.8rem,2vw,1rem)]">Go Back</p>
               </Link>
             )}
