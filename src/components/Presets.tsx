@@ -55,9 +55,9 @@ const Presets = () => {
   );
 
   return (
-    <section>
-      <div className="flex flex-col items-center overflow-auto justify-center h-screen bg-[#13141b] w-screen p-2 md:p-10 pt-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:grid-cols-5">
+    <section className="h-full">
+      <div className=" overflow-auto  flex flex-col items-center  h-screen bg-[#13141b] w-screen p-2 md:p-10 ">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
           {currentItems.length === 0 ? (
             <div className="text-white">Loading...</div>
           ) : (
