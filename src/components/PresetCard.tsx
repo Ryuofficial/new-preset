@@ -28,7 +28,7 @@ const PresetCard = ({
             src={img}
             alt={`${title} image`}
             className={`w-72 h-40 aspect-video object-cover transition-opacity duration-300 ${
-              isLoaded ? "opacity-100" : "opacity-0"
+              isLoaded ? "opacity-70" : "opacity-0"
             }`}
             onLoad={() => setIsLoaded(true)}
             onError={() => setHasError(true)}
@@ -37,7 +37,7 @@ const PresetCard = ({
 
         <div className="p-4 ">
           {/* Genre */}
-          <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent  text-xs font-medium bg-white/10 text-white">
+          <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent  text-xs font-medium bg-white/10 text-white/70">
             {genre}
           </div>
 
@@ -58,7 +58,7 @@ const PresetCard = ({
           </div>
 
           {/* Button */}
-          <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-xs font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full group/button transition-all bg-white/10 hover:bg-white/20 ">
+          <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-xs font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-white/70 h-10 px-4 py-2 w-full group/button transition-all bg-white/10 hover:bg-white/20 ">
             Check Preset
             <svg
               xmlns="http://www.w3.org/2000/svg"

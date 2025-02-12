@@ -59,7 +59,9 @@ const Presets = () => {
       <div className=" overflow-auto  flex flex-col items-center  h-screen bg-[#13141b] w-screen p-2 md:p-10 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
           {currentItems.length === 0 ? (
-            <div className="text-white">Loading...</div>
+            <div className="text-white/70 flex justify-center items-center h-screen w-screen ">
+              Loading...
+            </div>
           ) : (
             currentItems.map(
               (
@@ -92,15 +94,15 @@ const Presets = () => {
         </div>
 
         {/* Pagination Controls */}
-        <div className="flex justify-center my-4">
+        <div className="flex justify-center my-4 text-[clamp(.8rem,2vw,.8rem)]">
           {/* Previous Button */}
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-            className={`mx-1 px-3 py-1 rounded ${
+            className={` mx-1 px-3 py-1 rounded ${
               currentPage === 1
-                ? "bg-gray-300 cursor-not-allowed"
-                : "bg-blue-500 text-white"
+                ? "bg-white/20 cursor-not-allowed"
+                : "bg-white/10 text-white"
             }`}
           >
             {"<"}
@@ -113,8 +115,8 @@ const Presets = () => {
               onClick={() => paginate(pageNumber)}
               className={`mx-1 px-3 py-1 rounded ${
                 currentPage === pageNumber
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300"
+                  ? "bg-white/10 text-[#2af598]"
+                  : "bg-white/20 text-white/50"
               }`}
             >
               {pageNumber}
@@ -127,8 +129,8 @@ const Presets = () => {
             disabled={currentPage === totalPages}
             className={`mx-1 px-3 py-1 rounded ${
               currentPage === totalPages
-                ? "bg-gray-300 cursor-not-allowed"
-                : "bg-blue-500 text-white"
+                ? "bg-white/20 cursor-not-allowed"
+                : "bg-white/10 text-white"
             }`}
           >
             {">"}
