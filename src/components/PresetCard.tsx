@@ -35,22 +35,24 @@ const PresetCard = ({
           />
         )}
 
-        <div className="p-4 space-y-2">
+        <div className="p-4 ">
           {/* Genre */}
           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent  text-xs font-medium bg-white/10 text-white">
             {genre}
           </div>
 
-          {/* Title */}
-          <h3 className="font-semibold text-lg leading-tight tracking-tight bg-gradient-to-r from-[#2af598]  to-[#009efd] text-transparent bg-clip-text">
-            {title}
-          </h3>
+          <div className="space-y-1 mt-3 mb-6">
+            {/* Title */}
+            <h3 className="font-semibold text-lg leading-tight tracking-tight bg-gradient-to-r from-[#2af598]  to-[#009efd] text-transparent bg-clip-text">
+              {title}
+            </h3>
 
-          {/* Author */}
+            {/* Author */}
 
-          <div className="flex items-center space-x-2  text-white/70 ">
-            <IoPersonSharp fontSize={12} />
-            <p className="text-sm">{author}</p>
+            <div className="flex items-center space-x-2  text-white/70 ">
+              <IoPersonSharp fontSize={12} />
+              <p className="text-sm font-light">{author}</p>
+            </div>
           </div>
 
           {/* Button */}
