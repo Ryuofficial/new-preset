@@ -1,5 +1,5 @@
 import { PresetType } from "./Presets";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { IoPersonSharp } from "react-icons/io5";
 
@@ -15,6 +15,12 @@ const PresetCard = ({
 }: PresetType) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+
+  // Reset loading state when image changes
+  useEffect(() => {
+    setIsLoaded(false);
+    setHasError(false);
+  }, [img]);
 
   return (
     <>
