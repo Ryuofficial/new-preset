@@ -116,7 +116,7 @@ const Presets = () => {
               className={`mx-1 px-3 py-1 rounded ${
                 currentPage === pageNumber
                   ? "bg-white/10 text-[#2af598]"
-                  : "bg-white/20 text-white/50"
+                  : "bg-white/20 text-white/80"
               }`}
             >
               {pageNumber}
