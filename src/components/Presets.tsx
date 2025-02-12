@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import PresetCard from "./PresetCard";
 
 export interface PresetType {
@@ -16,7 +15,11 @@ export interface PresetType {
 const Presets = () => {
   const CONFIG_URL = import.meta.env.VITE_CONFIG_URL;
   const [presets, setPresets] = useState<PresetType[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Retrieve the saved page from localStorage, default to 1 if not found
+    const savedPage = localStorage.getItem("currentPage");
+    return savedPage ? parseInt(savedPage, 10) : 1;
+  });
   const [itemsPerPage] = useState(10); // Number of items per page
 
   useEffect(() => {
@@ -24,6 +27,11 @@ const Presets = () => {
       .then((response) => response.json())
       .then((data) => setPresets(data));
   }, []);
+
+  // Save the current page to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage.toString());
+  }, [currentPage]);
 
   // Calculate the indexes for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -56,10 +64,10 @@ const Presets = () => {
 
   return (
     <section className="h-full">
-      <div className=" overflow-auto  flex flex-col items-center  h-screen bg-[#13141b] w-screen p-2 md:p-10 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
+      <div className="overflow-auto flex flex-col items-center h-screen bg-[#13141b] w-screen p-2 md:p-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {currentItems.length === 0 ? (
-            <div className="text-white/70 flex justify-center items-center h-screen w-screen ">
+            <div className="text-white/70 flex justify-center items-center h-screen w-screen">
               Loading...
             </div>
           ) : (
@@ -99,7 +107,7 @@ const Presets = () => {
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-            className={` mx-1 px-3 py-1 rounded ${
+            className={`mx-1 px-3 py-1 rounded ${
               currentPage === 1
                 ? "bg-white/20 cursor-not-allowed"
                 : "bg-white/10 text-white"
