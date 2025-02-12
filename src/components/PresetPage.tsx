@@ -23,7 +23,7 @@ const PresetPage: React.FC = () => {
   return (
     <div className="h-screen overflow-auto w-screen  flex text-white justify-center items-center  ">
       <div>
-        <div className=" h-fit grid grid-cols-1 sm:grid-cols-2 md:max-w-7xl pt-16 md:pt-8 w-screen px-0 md:px-8 ">
+        <div className="h-fit grid grid-cols-1 sm:grid-cols-2 md:max-w-7xl  w-screen px-0 md:px-8 ">
           <div className="w-full p-8">
             <div>
               <img
