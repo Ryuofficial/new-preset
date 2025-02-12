@@ -27,7 +27,7 @@ const PresetCard = ({
           <img
             src={img}
             alt={`${title} image`}
-            className={`w-72 h-40 aspect-video object-cover rounded-lg transition-opacity duration-300 ${
+            className={`w-72 h-40 aspect-video object-cover transition-opacity duration-300 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
             onLoad={() => setIsLoaded(true)}
@@ -41,9 +41,9 @@ const PresetCard = ({
             {genre}
           </div>
 
-          <div className="space-y-1 mt-3 mb-6">
+          <div className="space-y-[6px] mt-3 mb-6">
             {/* Title */}
-            <h3 className="font-semibold text-lg leading-tight tracking-tight bg-gradient-to-r from-[#2af598]  to-[#009efd] text-transparent bg-clip-text">
+            <h3 className="font-semibold text-[clamp(1rem,2vw,1.2rem)] leading-tight tracking-tight bg-gradient-to-r from-[#2af598]  to-[#009efd] text-transparent bg-clip-text">
               {title}
             </h3>
 
@@ -51,7 +51,9 @@ const PresetCard = ({
 
             <div className="flex items-center space-x-2  text-white/70 ">
               <IoPersonSharp fontSize={12} />
-              <p className="text-sm font-light">{author}</p>
+              <p className=" font-light text-[clamp(.8rem,2vw,.8rem)]">
+                {author}
+              </p>
             </div>
           </div>
 
