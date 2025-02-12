@@ -134,6 +134,8 @@ const PresetPage: React.FC = () => {
                 >
                   Import Directly
                 </a>
+
+                <p className="download-preset-button">Share</p>
               </div>
             </div>
           </div>
