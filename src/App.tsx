@@ -9,6 +9,7 @@ import Features from "./components/Features";
 import { Routes, Route } from "react-router-dom";
 import NavPreset from "./components/NavPreset";
 import PresetPage from "./components/PresetPage";
+import Page404 from "./components/Page404";
 
 export default function App() {
   return (
@@ -47,6 +48,16 @@ export default function App() {
                 <>
                   <NavPreset isCardPage={false} />
                   <PresetPage />
+                </>
+              }
+            />
+
+            <Route
+              path="*"
+              element={
+                <>
+                  <NavPreset isCardPage={true} />
+                  <Page404 />
                 </>
               }
             />
