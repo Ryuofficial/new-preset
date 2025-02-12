@@ -16,7 +16,7 @@ const PresetPage = () => {
   }
 
   return (
-    <div className="h-screen w-screen  flex text-white justify-center items-center  ">
+    <div className="h-full overflow-auto w-screen  flex text-white justify-center items-center  ">
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:max-w-7xl pt-16 md:pt-8 h-screen w-screen px-0 md:px-8 ">
           <div className="w-full p-8">
@@ -57,7 +57,23 @@ const PresetPage = () => {
               </div>
             </div>
           </div>
-          <div className="bg-blue-400 w-full">right side</div>
+          <div className="w-full p-8">
+            <div>
+              <h2 className="text-xl font-semibold text-white mb-4">
+                Download Options
+              </h2>
+
+              <div className="space-y-2">
+                <button className="download-preset-button">Download XML</button>
+                <button className="download-preset-button">
+                  Download Music
+                </button>
+                <button className="download-preset-button">
+                  Import Directly
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

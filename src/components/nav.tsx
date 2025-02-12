@@ -17,7 +17,7 @@ function Nav() {
 
   return (
     <>
-      <div className="flex justify-between items-center w-[92%] mx-auto p-4">
+      <div className="flex justify-between items-center w-[92%] mx-auto p-4 z-10">
         {/* 1st box- logo */}
         <div className="flex items-center">
           <img className="w-14 h-14" src={Logo} alt="icon" />

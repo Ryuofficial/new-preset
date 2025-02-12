@@ -10,7 +10,7 @@ type NavProps = {
 function Nav({ isCardPage }: NavProps) {
   return (
     <>
-      <div className="flex justify-between items-center w-[92%] mx-auto p-4">
+      <nav className="flex justify-between items-center w-[92%] mx-auto p-4 z-10">
         {/* 1st box- logo */}
         <div className="flex items-center">
           <img className="w-14 h-14" src={Logo} alt="icon" />
@@ -31,13 +31,13 @@ function Nav({ isCardPage }: NavProps) {
                 className="hover:text-[#2af598] flex items-center"
                 to={"/presets"}
               >
-                <RiArrowGoBackFill className="md:mr-3 text-xl " />
+                <RiArrowGoBackFill className="mr-2 md:mr-3 text-xl " />
                 <p className=" text-[clamp(.8rem,2vw,1rem)]">Go Back</p>
               </Link>
             )}
           </div>
         </div>
-      </div>
+      </nav>
       <div className="h-[1px] bg-[#151722]"></div>
     </>
   );
