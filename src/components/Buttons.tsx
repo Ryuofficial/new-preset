@@ -61,7 +61,7 @@ const Buttons = () => {
             to={"/presets"}
             className="transition-all flex w-full h-full bg-[#0e0f16] text-white rounded-full p-[2px] justify-center items-center active:shadow-pinkShadow active:text-[#2af598]"
           >
-            <a className="m-[7px]">View All Preset (Browser)</a>
+            <p className="m-[7px]">View All Preset (Browser)</p>
           </Link>
         </div>
       </div>
