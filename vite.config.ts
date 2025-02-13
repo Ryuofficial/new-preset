@@ -24,5 +24,5 @@ export default defineConfig({
     },
   },
 
-  base: "/new-preset/",
+  base: "/",
 });

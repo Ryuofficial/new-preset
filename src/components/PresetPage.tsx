@@ -20,7 +20,7 @@ const PresetPage: React.FC = () => {
 
   const domain = window.location.origin; // Gets the domain (e.g., http://localhost:3000 or https://example.com)
   const pathname = location.pathname; // Gets the path (e.g., /products/shoes)\
-  const shareLink: string = domain + pathname;
+  const shareLink: string = domain + "/#" + pathname;
 
   const [clickStates, setClickStates] = useState({
     xml: false,
