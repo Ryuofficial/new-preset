@@ -1,16 +1,24 @@
 import { usePresets } from "@/hooks/usePresets";
 import { PiYoutubeLogo } from "react-icons/pi";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Skeleton } from "./ui/skeleton";
 import Page404 from "./Page404";
+import useClipboard from "@/hooks/useClipboard";
 
 const PresetPage: React.FC = () => {
   const { presets } = usePresets();
+  const { copyToClipboard } = useClipboard();
   const { prstid } = useParams(); // Get the index from URL params
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const preset = presets.find((p) => p.title === prstid); // Use it as an index
+
+  const location = useLocation();
+
+  const domain = window.location.origin; // Gets the domain (e.g., http://localhost:3000 or https://example.com)
+  const pathname = location.pathname; // Gets the path (e.g., /products/shoes)\
+  const shareLink: string = domain + pathname;
 
   if (!preset) {
     return <Page404 />;
@@ -135,7 +143,12 @@ const PresetPage: React.FC = () => {
                   Import Directly
                 </a>
 
-                <p className="download-preset-button">Share</p>
+                <p
+                  onClick={() => copyToClipboard(shareLink)}
+                  className="download-preset-button"
+                >
+                  Share Link
+                </p>
               </div>
             </div>
           </div>
