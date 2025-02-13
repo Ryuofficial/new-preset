@@ -1,5 +1,6 @@
 import { FaTelegramPlane, FaYoutube, FaTiktok } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 function Contact() {
   return (
     <footer
@@ -38,9 +39,19 @@ function Contact() {
           <MdEmail />
           <a href="mailto:ryuofficial64@gmail.com" aria-label="Email link"></a>
         </div>
-        <p className="text-[0.7rem] text-center md:text-start text-[#979696]">
-          Created by Ryu developer 2024
-        </p>
+
+        <div className="space-y-1 text-center md:text-start">
+          <Link
+            to={"/disclaimer"}
+            className="text-[0.7rem]  text-[#979696] underline"
+          >
+            Disclaimer
+          </Link>
+
+          <p className="text-[0.7rem]  text-[#979696]">
+            Created by Ryu developer 2024
+          </p>
+        </div>
       </div>
     </footer>
   );

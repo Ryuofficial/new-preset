@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import NavPreset from "./components/NavPreset";
 import PresetPage from "./components/PresetPage";
 import Page404 from "./components/Page404";
+import Disclaimer from "./components/Disclaimer";
 
 export default function App() {
   return (
@@ -48,6 +49,16 @@ export default function App() {
                 <>
                   <NavPreset isCardPage={false} />
                   <PresetPage />
+                </>
+              }
+            />
+
+            <Route
+              path="/disclaimer"
+              element={
+                <>
+                  <NavPreset isCardPage={true} />
+                  <Disclaimer />
                 </>
               }
             />

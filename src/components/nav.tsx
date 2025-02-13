@@ -5,7 +5,7 @@ import Logo from "../img/logo.webp";
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  function onToggleMenu(e: any) {
+  function onToggleMenu() {
     setMenuOpen(!menuOpen);
     const navLinks = document.querySelector(".nav-links-bar");
     if (navLinks) {
