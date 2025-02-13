@@ -9,7 +9,6 @@ function Nav() {
     setMenuOpen(!menuOpen);
     const navLinks = document.querySelector(".nav-links-bar");
     if (navLinks) {
-      e.target.name = e.target.name === "menu" ? "close" : "menu";
       navLinks.classList.toggle("top-[13%]");
     } else {
       console.error("Element not found!");
