@@ -29,8 +29,8 @@ const Disclaimer = () => {
         </h3>
         <p className="text-[clamp(.8rem,2vw,1rem)] text-gray-300/80 mb-10 md:mb-8  mt-2">
           If you are the creator of a preset and want it removed, please{" "}
-          <span className="font-semibold">contact us</span>, and we will take it
-          down immediately. We{" "}
+          <span className="font-semibold text-white/90">contact us</span>, and
+          we will take it down immediately. We{" "}
           <span className="font-semibold text-white/90">
             respect all intellectual property rights
           </span>{" "}
