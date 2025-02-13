@@ -2,13 +2,14 @@ import { usePresets } from "@/hooks/usePresets";
 import { PiYoutubeLogo } from "react-icons/pi";
 import { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from "./ui/skeleton";
+import { copyToClipboard } from "@/lib/utils";
 import Page404 from "./Page404";
-import useClipboard from "@/hooks/useClipboard";
 
 const PresetPage: React.FC = () => {
   const { presets } = usePresets();
-  const { copyToClipboard } = useClipboard();
+  const { toast } = useToast();
   const { prstid } = useParams(); // Get the index from URL params
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -144,7 +145,12 @@ const PresetPage: React.FC = () => {
                 </a>
 
                 <p
-                  onClick={() => copyToClipboard(shareLink)}
+                  onClick={() => {
+                    copyToClipboard(shareLink);
+                    toast({
+                      description: "Copied! Share it now.",
+                    });
+                  }}
                   className="download-preset-button"
                 >
                   Share Link
