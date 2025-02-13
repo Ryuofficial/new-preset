@@ -34,17 +34,17 @@ const PresetPage: React.FC = () => {
           <div className="w-full p-8">
             <div>
               {/* Image Skeleton */}
-              {!isLoaded && !hasError && (
+              {!isLoaded && hasError && (
                 <Skeleton className="aspect-video w-full rounded-xl  bg-[#13141b]" />
               )}
 
               {/* Image */}
               {!hasError && (
                 <>
-                  <div className="relative rounded-xl overflow-hidden">
+                  <div className="aspect-video relative rounded-xl sm:rounded-3xl overflow-hidden">
                     <img
-                      className={`w-full h-auto backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 opacity-40 ${
-                        isLoaded ? "block" : "hidden"
+                      className={`object-fill w-full h-auto backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 opacity-40  ${
+                        isLoaded ? "opacity-70" : "opacity-0"
                       }`}
                       src={img}
                       onLoad={() => setIsLoaded(true)}

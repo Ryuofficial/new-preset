@@ -23,7 +23,7 @@ function Nav({ isCardPage }: NavProps) {
           <div className="text-[#bebebe]">
             {isCardPage ? (
               <Link className="hover:text-[#2af598] flex items-center" to={"/"}>
-                <GoHomeFill className="md:mr-3 text-xl " />
+                <GoHomeFill className="mr-2 text-xl " />
                 <p className="hidden sm:block">Go Home</p>
               </Link>
             ) : (
