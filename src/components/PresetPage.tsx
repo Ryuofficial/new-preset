@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from "./ui/skeleton";
+import { directLink } from "./Buttons";
 import { copyToClipboard } from "@/lib/utils";
 import Page404 from "./Page404";
 
@@ -20,6 +21,24 @@ const PresetPage: React.FC = () => {
   const domain = window.location.origin; // Gets the domain (e.g., http://localhost:3000 or https://example.com)
   const pathname = location.pathname; // Gets the path (e.g., /products/shoes)\
   const shareLink: string = domain + pathname;
+
+  const [clickStates, setClickStates] = useState({
+    xml: false,
+    music: false,
+    direct: false,
+  });
+
+  const handleDownloadClick = (
+    type: "xml" | "music" | "direct",
+    actualLink: string
+  ) => {
+    if (!clickStates[type]) {
+      window.open(directLink, "_blank"); // Opens the direct link first
+      setClickStates((prev) => ({ ...prev, [type]: true }));
+    } else {
+      window.open(actualLink, "_blank"); // Opens the actual download link
+    }
+  };
 
   if (!preset) {
     return <Page404 />;
@@ -122,27 +141,24 @@ const PresetPage: React.FC = () => {
                 Download Options
               </h2>
               <div className="space-y-2 text-[clamp(.7rem,2vw,.9rem)]">
-                <a
-                  href={DownloadXML}
-                  target="_blank"
+                <button
+                  onClick={() => handleDownloadClick("xml", DownloadXML)}
                   className="download-preset-button"
                 >
                   Download XML
-                </a>
-                <a
-                  href={DownloadMusic}
-                  target="_blank"
+                </button>
+                <button
+                  onClick={() => handleDownloadClick("music", DownloadMusic)}
                   className="download-preset-button"
                 >
                   Download Music
-                </a>
-                <a
-                  href={directAM}
-                  target="_blank"
+                </button>
+                <button
+                  onClick={() => handleDownloadClick("direct", directAM)}
                   className="download-preset-button"
                 >
                   Import Directly
-                </a>
+                </button>
 
                 <p
                   onClick={() => {

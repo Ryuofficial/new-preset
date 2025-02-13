@@ -3,8 +3,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import LoadingAnimation from "./LoadingAnimation";
 
+export const directLink = import.meta.env.VITE_AM_DIRECT_LINK;
+
 const Buttons = () => {
   const [isStarted, setIsStarted] = useState(false);
+
   let isDownloading: boolean = false;
 
   const handleDownloadClick = (): void => {
@@ -28,7 +31,7 @@ const Buttons = () => {
 
     // Improved Redirect (using setTimeout)
     setTimeout(() => {
-      window.location.href = "https://dolatiaschan.com/4/7719224";
+      window.location.href = directLink;
     }, 3000); // Adjust delay as needed (e.g., 3 seconds)
 
     setTimeout(() => {
