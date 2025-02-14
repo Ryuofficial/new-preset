@@ -99,7 +99,7 @@ const PresetPage: React.FC = () => {
           <div className="w-full p-8">
             <div>
               {/* Image Skeleton */}
-              {!isLoaded && !hasError && (
+              {!isLoaded && hasError && (
                 <Skeleton className="aspect-video w-full rounded-xl  bg-[#13141b]" />
               )}
 
