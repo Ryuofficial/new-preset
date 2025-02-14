@@ -99,7 +99,7 @@ const PresetPage: React.FC = () => {
           <div className="w-full p-8">
             <div>
               {/* Image Skeleton */}
-              {!isLoaded && hasError && (
+              {!isLoaded && !hasError && (
                 <Skeleton className="aspect-video w-full rounded-xl  bg-[#13141b]" />
               )}
 
@@ -186,6 +186,7 @@ const PresetPage: React.FC = () => {
                 {/* Download Buttons */}
                 {buttonData.map(({ name, disabled, onClickType, link }, id) => (
                   <motion.button
+                    key={id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 + id * 0.1 }} // Staggered delay for tags
