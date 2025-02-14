@@ -1,12 +1,20 @@
 import { usePresets } from "@/hooks/usePresets";
 import { PiYoutubeLogo } from "react-icons/pi";
 import { useState } from "react";
+import { motion } from "motion/react";
 import { useParams, useLocation } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from "./ui/skeleton";
 import { directLink } from "./Buttons";
 import { copyToClipboard } from "@/lib/utils";
 import Page404 from "./Page404";
+
+interface PresetType {
+  name: string;
+  disabled: boolean;
+  onClickType: "xml" | "music" | "direct";
+  link: string | undefined;
+}
 
 const PresetPage: React.FC = () => {
   const { presets } = usePresets();
@@ -21,11 +29,28 @@ const PresetPage: React.FC = () => {
   const pathname = location.pathname; // Gets the path (e.g., /products/shoes)\
   const shareLink: string = domain + "/#" + pathname;
 
+  // Destructure data from the preset object
+  const {
+    title,
+    author,
+    img,
+    DownloadMusic,
+    DownloadXML,
+    directAM,
+    genre,
+    previewPreset,
+  } = preset || {};
+
+  //Check if the button is First time clicked
   const [clickStates, setClickStates] = useState({
     xml: false,
     music: false,
     direct: false,
   });
+
+  // Check if XML and Direct link is equal to "0"
+  const isHasXML = DownloadXML !== "0";
+  const isHasDirect = directAM !== "0";
 
   const handleDownloadClick = (
     type: "xml" | "music" | "direct",
@@ -39,24 +64,33 @@ const PresetPage: React.FC = () => {
     }
   };
 
+  //Button Data for the download options
+  const buttonData: PresetType[] = [
+    {
+      name: "Download XML",
+      disabled: !isHasXML,
+      onClickType: "xml",
+      link: DownloadXML,
+    },
+
+    {
+      name: "Download Music",
+      disabled: false,
+      onClickType: "music",
+      link: DownloadMusic,
+    },
+
+    {
+      name: "Import Directly",
+      disabled: !isHasDirect,
+      onClickType: "direct",
+      link: directAM,
+    },
+  ];
+
   if (!preset) {
     return <Page404 />;
   }
-
-  const {
-    title,
-    author,
-    img,
-    DownloadMusic,
-    DownloadXML,
-    directAM,
-    genre,
-    previewPreset,
-  } = preset;
-
-  // Check if XML and Direct link is equal to "0"
-  const isHasXML = DownloadXML !== "0";
-  const isHasDirect = directAM !== "0";
 
   return (
     <div className="h-screen overflow-auto w-screen flex text-white justify-center items-center">
@@ -102,7 +136,12 @@ const PresetPage: React.FC = () => {
               )}
             </div>
 
-            <div className="mt-4 bg-slate-900 backdrop-blur-xl bg-white/5 p-6 rounded-2xl border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="mt-4 bg-slate-900 backdrop-blur-xl bg-white/5 p-6 rounded-2xl border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300"
+            >
               <div className="space-y-2">
                 {/* Title */}
                 <h1 className="text-[clamp(1.1rem,2vw,1.5rem)] font-bold bg-gradient-to-r from-[#2af598] to-[#009efd] text-transparent bg-clip-text">
@@ -135,7 +174,7 @@ const PresetPage: React.FC = () => {
                   </p>
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="w-full p-8 pt-0 md:pt-8">
@@ -144,32 +183,28 @@ const PresetPage: React.FC = () => {
                 Download Options
               </h2>
               <div className="space-y-2 text-[clamp(.7rem,2vw,.9rem)]">
-                <button
-                  disabled={!isHasXML}
-                  onClick={() => handleDownloadClick("xml", DownloadXML)}
-                  className={`download-preset-button ${
-                    !isHasXML && "opacity-50 cursor-not-allowed"
-                  }`}
-                >
-                  {!isHasXML ? "Not Available" : "Download XML"}
-                </button>
-                <button
-                  onClick={() => handleDownloadClick("music", DownloadMusic)}
-                  className="download-preset-button"
-                >
-                  Download Music
-                </button>
-                <button
-                  disabled={!isHasDirect}
-                  onClick={() => handleDownloadClick("direct", directAM)}
-                  className={`download-preset-button ${
-                    !isHasDirect && "opacity-50 cursor-not-allowed"
-                  }`}
-                >
-                  {!isHasDirect ? "Not Available" : "Import Directly"}
-                </button>
+                {/* Download Buttons */}
+                {buttonData.map(({ name, disabled, onClickType, link }, id) => (
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 + id * 0.1 }} // Staggered delay for tags
+                    disabled={disabled}
+                    onClick={() =>
+                      link && handleDownloadClick(onClickType, link)
+                    }
+                    className={`download-preset-button ${
+                      disabled && "opacity-50 cursor-not-allowed"
+                    }`}
+                  >
+                    {disabled ? "Not Available" : name}
+                  </motion.button>
+                ))}
 
-                <p
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 + 3 * 0.1 }} // Staggered delay for tags
                   onClick={() => {
                     copyToClipboard(shareLink);
                     toast({
@@ -179,7 +214,7 @@ const PresetPage: React.FC = () => {
                   className="download-preset-button"
                 >
                   Share Link
-                </p>
+                </motion.p>
               </div>
             </div>
           </div>

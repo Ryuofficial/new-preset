@@ -12,6 +12,7 @@
     "clsx": "^2.1.1",
     "feather-icons": "^4.29.2",
     "lucide-react": "^0.475.0",
+    "motion": "^12.4.2",
     "react": "^18.2.0",
     "react-collapse": "^5.1.1",
     "react-dom": "^18.2.0",
