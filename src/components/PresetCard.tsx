@@ -12,7 +12,7 @@ const PresetCard = ({ title, author, img, genre }: PresetType) => {
   return (
     <>
       <div className="rounded-lg border text-card-foreground shadow-sm group overflow-hidden transition-all duration-300 hover:shadow-lg max-w-sm w-full backdrop-blur-xl bg-[#0e0f16] border-white/10">
-        {!isLoaded && hasError && (
+        {!isLoaded && !hasError && (
           <Skeleton className="aspect-video w-72 h-40 bg-[#13141b]" />
         )}
 
