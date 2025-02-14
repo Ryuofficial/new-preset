@@ -1,4 +1,10 @@
-import { useEffect, useState } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  ReactNode,
+} from "react";
 
 export interface PresetType {
   title: string;
@@ -13,20 +19,49 @@ export interface PresetType {
 }
 
 const CONFIG_URL = import.meta.env.VITE_CONFIG_URL;
+const KEY = import.meta.env.VITE_API_KEY;
 
-export const usePresets = () => {
+interface PresetsContextType {
+  presets: PresetType[];
+  loading: boolean;
+}
+
+const PresetsContext = createContext<PresetsContextType>({
+  presets: [],
+  loading: true,
+});
+
+export const PresetsProvider = ({ children }: { children: ReactNode }) => {
   const [presets, setPresets] = useState<PresetType[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(CONFIG_URL)
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchPresets = async () => {
+      try {
+        const response = await fetch(CONFIG_URL, {
+          headers: {
+            "X-API-KEY": KEY,
+          },
+        });
+        const data = await response.json();
         setPresets(data);
+      } catch (error) {
+        console.error("Error fetching presets:", error);
+      } finally {
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      }
+    };
+
+    fetchPresets();
   }, []);
 
-  return { presets, loading };
+  return (
+    <PresetsContext.Provider value={{ presets, loading }}>
+      {children}
+    </PresetsContext.Provider>
+  );
+};
+
+export const usePresets = () => {
+  return useContext(PresetsContext);
 };
