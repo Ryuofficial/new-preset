@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { usePresets } from "../hooks/usePresets";
-
 import PresetCard from "./PresetCard";
 
 export interface PresetType {

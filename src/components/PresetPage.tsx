@@ -17,7 +17,6 @@ const PresetPage: React.FC = () => {
   const preset = presets.find((p) => p.title === prstid); // Use it as an index
 
   const location = useLocation();
-
   const domain = window.location.origin; // Gets the domain (e.g., http://localhost:3000 or https://example.com)
   const pathname = location.pathname; // Gets the path (e.g., /products/shoes)\
   const shareLink: string = domain + "/#" + pathname;
@@ -54,6 +53,10 @@ const PresetPage: React.FC = () => {
     genre,
     previewPreset,
   } = preset;
+
+  // Check if XML and Direct link is equal to "0"
+  const isHasXML = DownloadXML !== "0";
+  const isHasDirect = directAM !== "0";
 
   return (
     <div className="h-screen overflow-auto w-screen flex text-white justify-center items-center">
@@ -142,10 +145,13 @@ const PresetPage: React.FC = () => {
               </h2>
               <div className="space-y-2 text-[clamp(.7rem,2vw,.9rem)]">
                 <button
+                  disabled={!isHasXML}
                   onClick={() => handleDownloadClick("xml", DownloadXML)}
-                  className="download-preset-button"
+                  className={`download-preset-button ${
+                    !isHasXML && "opacity-50 cursor-not-allowed"
+                  }`}
                 >
-                  Download XML
+                  {!isHasXML ? "Not Available" : "Download XML"}
                 </button>
                 <button
                   onClick={() => handleDownloadClick("music", DownloadMusic)}
@@ -154,10 +160,13 @@ const PresetPage: React.FC = () => {
                   Download Music
                 </button>
                 <button
+                  disabled={!isHasDirect}
                   onClick={() => handleDownloadClick("direct", directAM)}
-                  className="download-preset-button"
+                  className={`download-preset-button ${
+                    !isHasDirect && "opacity-50 cursor-not-allowed"
+                  }`}
                 >
-                  Import Directly
+                  {!isHasDirect ? "Not Available" : "Import Directly"}
                 </button>
 
                 <p
